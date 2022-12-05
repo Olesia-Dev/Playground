@@ -1,8 +1,5 @@
 package com.playground.string;
 
-import java.util.Arrays;
-import java.util.Collection;
-
 public class StringReverse {
 
     public static void main(String[] args) {
@@ -14,7 +11,7 @@ public class StringReverse {
         reverseUsingSwap(originalStr);
 
         String recursionReverse = reverseUsingRecursion(originalStr, originalStr.length() - 1);
-        System.out.println("reverseUsingRecursion:" + recursionReverse);
+        System.out.println("reverseUsingRecursion: " + recursionReverse);
     }
 
     private static void reverseStringBuilding(String stringToReverse) {
