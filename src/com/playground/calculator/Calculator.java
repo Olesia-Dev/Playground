@@ -11,7 +11,8 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in);
         String inputExpression = scanner.nextLine();
 
-        Pattern expressionPattern = Pattern.compile("^(\\d+)\\s*([+*-/])\\s*(\\d+)$");
+        Pattern expressionPattern = Pattern.compile(
+                "^(\\d+[.]?\\d*)\\s*([+*-/])\\s*(\\d+[.]?\\d*)$");
         Matcher expressionMatcher = expressionPattern.matcher(inputExpression);
         if (expressionMatcher.find()) {
             double firstNumber = Double.parseDouble(expressionMatcher.group(1));
