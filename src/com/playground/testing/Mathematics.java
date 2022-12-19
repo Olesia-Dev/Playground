@@ -7,4 +7,9 @@ public class Mathematics {
         return sum;
     }
 
+    public int subtractionTwoNumbers(int first, int second) {
+        int subtraction = first - second;
+        return subtraction;
+    }
+
 }

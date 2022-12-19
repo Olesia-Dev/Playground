@@ -17,23 +17,24 @@ public class Calculator {
         if (expressionMatcher.find()) {
             double firstNumber = Double.parseDouble(expressionMatcher.group(1));
             double secondNumber = Double.parseDouble(expressionMatcher.group(3));
-            calculate(firstNumber, secondNumber, expressionMatcher.group(2));
+            Calculator calculator = new Calculator();
+            calculator.calculate(firstNumber, secondNumber, expressionMatcher.group(2));
         } else {
             System.out.println("Your input is not recognized as simple mathematical expression!");
         }
     }
 
-    private static void calculate(double firstNumber, double secondNumber, String operation) {
+    private void calculate(double firstNumber, double secondNumber, String operation) {
         Double result = null;
         switch (operation) {
             case "+":
-                result = firstNumber + secondNumber;
+                result = sum(firstNumber, secondNumber);
                 break;
             case "-":
-                result = firstNumber - secondNumber;
+                result = subtract(firstNumber, secondNumber);
                 break;
             case "*":
-                result = firstNumber * secondNumber;
+                result = multiply(firstNumber, secondNumber);
                 break;
             case "/":
                 if (secondNumber == 0) {
@@ -44,6 +45,18 @@ public class Calculator {
                 break;
         }
         System.out.println("The result is: " + result);
+    }
+
+    double sum(double firstNumber, double secondNumber) {
+        return firstNumber + secondNumber;
+    }
+
+    double subtract(double firstNumber, double secondNumber) {
+        return  firstNumber - secondNumber;
+    }
+
+    double multiply(double firstNumber, double secondNumber) {
+        return  firstNumber * secondNumber;
     }
 
 }

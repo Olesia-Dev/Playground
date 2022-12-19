@@ -29,4 +29,12 @@ public class CheckTesting {
         assertEquals(-56, result);
     }
 
+    @Test
+    public void testSubtraction() {
+        Mathematics mathematics = new Mathematics();
+        int result = mathematics.subtractionTwoNumbers(31, 27);
+
+        assertEquals(4, result);
+    }
+
 }
