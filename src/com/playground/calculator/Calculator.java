@@ -30,22 +30,16 @@ public class Calculator {
     Double calculate(double firstNumber, double secondNumber, String operation) {
         Double result = null;
         switch (operation) {
-            case "+":
-                result = sum(firstNumber, secondNumber);
-                break;
-            case "-":
-                result = subtract(firstNumber, secondNumber);
-                break;
-            case "*":
-                result = multiply(firstNumber, secondNumber);
-                break;
-            case "/":
+            case "+" -> result = sum(firstNumber, secondNumber);
+            case "-" -> result = subtract(firstNumber, secondNumber);
+            case "*" -> result = multiply(firstNumber, secondNumber);
+            case "/" -> {
                 if (secondNumber == 0) {
                     System.out.println("Division by zero is not allowed!");
                     return result;
                 }
                 result = divide(firstNumber, secondNumber);
-                break;
+            }
         }
         return result;
     }
