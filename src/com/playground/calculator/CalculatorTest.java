@@ -3,6 +3,7 @@ package com.playground.calculator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class CalculatorTest {
 
@@ -24,6 +25,18 @@ public class CalculatorTest {
     public void testMultiply() {
         double result = calculator.multiply(2, 3);
         assertEquals(6, result);
+    }
+
+    @Test
+    public void testDivide() {
+        double result = calculator.divide(6, 3);
+        assertEquals(2, result);
+    }
+
+    @Test
+    public void testDivisionByZero() {
+        Double result = calculator.calculate(5, 0, "/");
+        assertNull(result);
     }
 
 }

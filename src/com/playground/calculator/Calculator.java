@@ -18,13 +18,16 @@ public class Calculator {
             double firstNumber = Double.parseDouble(expressionMatcher.group(1));
             double secondNumber = Double.parseDouble(expressionMatcher.group(3));
             Calculator calculator = new Calculator();
-            calculator.calculate(firstNumber, secondNumber, expressionMatcher.group(2));
+            Double result = calculator.calculate(firstNumber, secondNumber, expressionMatcher.group(2));
+            if (result != null) {
+                System.out.println("The result is: " + result);
+            }
         } else {
             System.out.println("Your input is not recognized as simple mathematical expression!");
         }
     }
 
-    private void calculate(double firstNumber, double secondNumber, String operation) {
+    Double calculate(double firstNumber, double secondNumber, String operation) {
         Double result = null;
         switch (operation) {
             case "+":
@@ -39,12 +42,12 @@ public class Calculator {
             case "/":
                 if (secondNumber == 0) {
                     System.out.println("Division by zero is not allowed!");
-                    return;
+                    return result;
                 }
-                result = firstNumber / secondNumber;
+                result = divide(firstNumber, secondNumber);
                 break;
         }
-        System.out.println("The result is: " + result);
+        return result;
     }
 
     double sum(double firstNumber, double secondNumber) {
@@ -52,11 +55,15 @@ public class Calculator {
     }
 
     double subtract(double firstNumber, double secondNumber) {
-        return  firstNumber - secondNumber;
+        return firstNumber - secondNumber;
     }
 
     double multiply(double firstNumber, double secondNumber) {
-        return  firstNumber * secondNumber;
+        return firstNumber * secondNumber;
+    }
+
+    double divide(double firstNumber, double secondNumber) {
+        return firstNumber / secondNumber;
     }
 
 }
