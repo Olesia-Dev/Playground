@@ -6,14 +6,15 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
+    static final Pattern MATH_EXPRESSION_PATTERN = Pattern.compile(
+            "^(\\d+[.]?\\d*)\\s*([+*-/])\\s*(\\d+[.]?\\d*)$");
+
     public static void main(String[] args) {
         System.out.println("Please enter your expression:");
         Scanner scanner = new Scanner(System.in);
         String inputExpression = scanner.nextLine();
 
-        Pattern expressionPattern = Pattern.compile(
-                "^(\\d+[.]?\\d*)\\s*([+*-/])\\s*(\\d+[.]?\\d*)$");
-        Matcher expressionMatcher = expressionPattern.matcher(inputExpression);
+        Matcher expressionMatcher = MATH_EXPRESSION_PATTERN.matcher(inputExpression);
         if (expressionMatcher.find()) {
             double firstNumber = Double.parseDouble(expressionMatcher.group(1));
             double secondNumber = Double.parseDouble(expressionMatcher.group(3));

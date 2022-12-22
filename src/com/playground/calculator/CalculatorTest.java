@@ -2,8 +2,9 @@ package com.playground.calculator;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import java.util.regex.Matcher;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
 
@@ -37,6 +38,20 @@ public class CalculatorTest {
     public void testDivisionByZero() {
         Double result = calculator.calculate(5, 0, "/");
         assertNull(result);
+    }
+
+    @Test
+    public void testMathExpression() {
+        String expression = "2 + 3";
+        Matcher matcher = Calculator.MATH_EXPRESSION_PATTERN.matcher(expression);
+        assertTrue(matcher.find());
+    }
+
+    @Test
+    public void testUnsupportedMathExpression() {
+        String expression = "2 % 3";
+        Matcher matcher = Calculator.MATH_EXPRESSION_PATTERN.matcher(expression);
+        assertFalse(matcher.find());
     }
 
 }
