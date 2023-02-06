@@ -1,8 +1,7 @@
 package com.playground.streams;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -30,6 +29,49 @@ public class Main {
                 .toList();
 
 //        sorted.forEach(System.out::println);
+
+        // All match
+        boolean allMatch = people.stream()
+                .allMatch(person -> person.getAge() > 8);
+//        System.out.println(allMatch);
+
+        // Any match
+        boolean anyMatch = people.stream()
+                .anyMatch(person -> person.getAge() > 121);
+//        System.out.println(anyMatch);
+
+        // Non match
+        boolean noneMatch = people.stream()
+                .noneMatch(person -> person.getName().equals("Antonio"));
+//        System.out.println(noneMatch);
+
+        // Max
+        people.stream()
+                .max(Comparator.comparing(Person::getAge));
+//                .ifPresent(System.out::println);
+
+        // Min
+        people.stream()
+                .min(Comparator.comparing(Person::getAge));
+//                .ifPresent(System.out::println);
+
+        // Group
+        Map<Gender, List<Person>> groupByGender = people.stream()
+                .collect(Collectors.groupingBy(Person::getGender));
+
+//        groupByGender.forEach((gender, people1) -> {
+//            System.out.println(gender);
+//            people1.forEach(System.out::println);
+//            System.out.println();
+//        });
+//
+        Optional<String> oldestFemaleAge = people.stream()
+                .filter(person -> person.getGender().equals(Gender.FEMALE))
+                .max(Comparator.comparing(Person::getAge))
+                .map(Person::getName);
+
+        oldestFemaleAge.ifPresent(System.out::println);
+        
     }
 
     private static List<Person> getPeople() {
