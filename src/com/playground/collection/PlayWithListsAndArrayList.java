@@ -6,7 +6,7 @@ import java.util.List;
 public class PlayWithListsAndArrayList {
 
     public static void main(String[] args) {
-        List <String> colors = new ArrayList<>();
+        List<String> colors = new ArrayList<>();
         colors.add("blue");
         colors.add("purple");
         colors.add("yellow");
@@ -15,7 +15,7 @@ public class PlayWithListsAndArrayList {
         System.out.println(colors.contains("pink"));
         System.out.println(colors);
 
-        for (String color: colors) {
+        for (String color : colors) {
             System.out.println(color);
         }
 
