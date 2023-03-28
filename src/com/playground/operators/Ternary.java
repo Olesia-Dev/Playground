@@ -1,4 +1,4 @@
-package com.playground.ternary;
+package com.playground.operators;
 
 public class Ternary {
 
